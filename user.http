@@ -1,0 +1,51 @@
+### Get specific user (protected route)
+GET http://localhost:3000/api/v1/users/6868fae37a607dcca850f607
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY4ZmFlMzdhNjA3ZGNjYTg1MGY2MDciLCJpYXQiOjE3NTE4MDkxMjEsImV4cCI6MTc1MTg5NTUyMX0.D5IJoc55j3paoJvGR1vTk1q4wjxwnQiIsfi8XgAzvcQ
+Content-Type: application/json
+
+### Sign in user
+POST http://localhost:3000/api/v1/auth/sign-in
+Content-Type: application/json
+
+{
+  "email": "anandita@example.com",
+  "password": "SuperSecure123!"
+}
+
+
+### Create subscription (will trigger reminder logs)
+POST http://localhost:3000/api/v1/subscriptions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY4ZmFlMzdhNjA3ZGNjYTg1MGY2MDciLCJpYXQiOjE3NTE4MDkxMjEsImV4cCI6MTc1MTg5NTUyMX0.D5IJoc55j3paoJvGR1vTk1q4wjxwnQiIsfi8XgAzvcQ
+Content-Type: application/json
+
+{
+  "name": "spotify premium",
+  "price": 119,
+  "currency": "INR",
+  "frequency": "monthly",
+  "category": "entertainment",
+  "paymentMethod": "debit_card",
+  "startDate": "2025-06-30",
+  "renewalDate": "2025-07-13",
+  "status": "active"
+}
+
+
+
+
+
+### Get all subscriptions for a user
+GET http://localhost:3000/api/v1/subscriptions/user/6868fae37a607dcca850f607
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY4ZmFlMzdhNjA3ZGNjYTg1MGY2MDciLCJpYXQiOjE3NTE3Mzk4ODAsImV4cCI6MTc1MTgyNjI4MH0.JO-o6gpvJApzaeR851P9-wGc3FIP9B3Nx98f0byCf8g
+
+# signup user
+POST http://localhost:3000/api/v1/auth/sign-up
+Content-type: application/json
+
+{
+  "name": "Anandita",
+  "email": "ananditasharma2021@gmail.com",
+  "password": "admin123",
+}
+
+token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY4ZmFlMzdhNjA3ZGNjYTg1MGY2MDciLCJpYXQiOjE3NTE4MDkxMjEsImV4cCI6MTc1MTg5NTUyMX0.D5IJoc55j3paoJvGR1vTk1q4wjxwnQiIsfi8XgAzvcQ

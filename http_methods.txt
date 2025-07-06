@@ -1,0 +1,11 @@
+GET is used to request data from a specified resource.
+
+POST is used to create new resources
+
+PUT is used to replace an existing resource with the data provided in the request. 
+    If the resource doesn't exist, it can be created. 
+
+HEAD is similar to GET, but only retrieves the headers of the response, not the body. 
+    Useful for checking resource availability or metadata. 
+
+DELETE is used to remove a resource.
