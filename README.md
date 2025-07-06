@@ -40,17 +40,16 @@ Whether you're managing a Spotify-style subscription service or a SaaS billing l
 | Auth | JWT + Bcrypt |
 | Rate Limiting | Arcjet |
 | Emails | Nodemailer + Upstash Workflows |
-| Hosting | Render  |
 
 ---
 
 ## Why I Built This
 
-> This project was originally inspired by a tutorial from [JS Mastery], and expanded upon to add custom features, security layers, and deployment integrations.
-
 While following tutorials helped me grasp the building blocks, I customized and extended this API to fit real production use cases — like protecting user data, planning for renewals, and keeping the codebase scalable.
 
 It’s now fully ready to be deployed as a backend for any subscription-based app — think content platforms, SaaS tools, or even gym memberships.
+
+> This project was originally inspired by a tutorial from [JS Mastery], and expanded upon to add custom features, security layers, and deployment integrations.
 
 
 ---
