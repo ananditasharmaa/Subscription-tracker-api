@@ -2,6 +2,7 @@ import Subscription from '../models/subscription.model.js'
 import { workflowClient } from '../config/upstash.js'
 import { SERVER_URL } from '../config/env.js'
 
+// 1. CREATE a new subscription
 export const createSubscription = async (req, res, next) => {
   try {
     const subscription = await Subscription.create({
@@ -27,6 +28,7 @@ export const createSubscription = async (req, res, next) => {
   }
 }
 
+// 2. GET all subscriptions for a user
 export const getUserSubscriptions = async (req, res, next) => {
   try {
     // Check if the user is the same as the one in the token
@@ -44,7 +46,7 @@ export const getUserSubscriptions = async (req, res, next) => {
   }
 }
 
-// 1. GET all subscriptions (admin use)
+// 3. GET all subscriptions (admin use)
 export const getAllSubscriptions = async (req, res, next) => {
   try {
     const subscriptions = await Subscription.find({});
@@ -54,7 +56,7 @@ export const getAllSubscriptions = async (req, res, next) => {
   }
 };
 
-// 2. GET one subscription by ID
+// 4. GET one subscription by ID
 export const getSubscriptionById = async (req, res, next) => {
   try {
     const subscription = await Subscription.findById(req.params.id);
@@ -67,7 +69,7 @@ export const getSubscriptionById = async (req, res, next) => {
   }
 };
 
-// 3. UPDATE a subscription
+// 5. UPDATE a subscription
 export const updateSubscription = async (req, res, next) => {
   try {
     const updated = await Subscription.findByIdAndUpdate(
@@ -84,7 +86,7 @@ export const updateSubscription = async (req, res, next) => {
   }
 };
 
-// 4. DELETE a subscription (by ID via query param or body)
+// 6. DELETE a subscription (by ID via query param or body)
 export const deleteSubscription = async (req, res, next) => {
   try {
     const { id } = req.query;
@@ -103,7 +105,7 @@ export const deleteSubscription = async (req, res, next) => {
   }
 };
 
-// 5. CANCEL subscription
+// 7. CANCEL subscription
 export const cancelSubscription = async (req, res, next) => {
   try {
     const subscription = await Subscription.findById(req.params.id);
@@ -124,7 +126,7 @@ export const cancelSubscription = async (req, res, next) => {
   }
 };
 
-// 6. GET upcoming renewals
+// 8. GET upcoming renewals
 export const getUpcomingRenewals = async (req, res, next) => {
   try {
     const now = new Date();
