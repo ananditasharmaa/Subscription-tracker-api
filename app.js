@@ -26,6 +26,7 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/subscriptions', subscriptionRouter);
 app.use('/api/v1/workflows', workflowRouter);
 
+// Global error handling middleware
 app.use(errorMiddleware);
 
 //app.get tells whenver the the user comes to my website, which is req then do this which is res
