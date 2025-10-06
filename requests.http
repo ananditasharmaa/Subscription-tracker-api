@@ -32,3 +32,109 @@ Content-Type: application/json
   "paymentMethod": "debit_card",
   "startDate": "2025-08-13"
 }
+
+### signup
+POST http://localhost:3000/api/v1/auth/sign-up
+Content-Type: application/json
+
+{
+  "name": "Anandita Sharma",
+  "email": "221210018@nitdelhi.ac.in",
+  "password": "admin123"
+}
+
+### get all users
+GET http://localhost:3000/api/v1/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGJkOGVlZWFkZDY2MGY2NjIwOGNjNmQiLCJpYXQiOjE3NTcyNTMzNTgsImV4cCI6MTc1NzMzOTc1OH0.THQ_t_Aw8BvJprV64TcVxnNfBOLM633Z-rc8H6BwDM8
+
+###get user by id
+GET http://localhost:3000/api/v1/users/68bb0f119b9373758be0c45a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGJkOGVlZWFkZDY2MGY2NjIwOGNjNmQiLCJpYXQiOjE3NTcyNTMzNTgsImV4cCI6MTc1NzMzOTc1OH0.THQ_t_Aw8BvJprV64TcVxnNfBOLM633Z-rc8H6BwDM8
+
+### create admin
+POST http://localhost:3000/api/v1/users
+Content-Type: application/json
+
+{
+  "name": "Admin",
+  "email": "221210018@nit.ac.in",
+  "password": "admin123"
+}
+
+###user login
+POST http://localhost:3000/api/v1/auth/sign-in
+Content-Type: application/json
+
+{
+  "email": "221210018@nit.ac.in",
+  "password": "admin123"
+}
+
+### update user
+PUT http://localhost:3000/api/v1/users/68bd969cdc61335c1ddb2397
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGJkOTY5Y2RjNjEzMzVjMWRkYjIzOTciLCJpYXQiOjE3NTcyNTU1MTksImV4cCI6MTc1NzM0MTkxOX0.xVSHoMeepbP-c2PaUEBIFhXn7akIPWcaRS_-cmdwJj0
+Content-Type: application/json
+
+{
+  "name": "Admin Updated",
+  "email": "221210018@nit.ac.in"
+}
+
+### delete user
+DELETE http://localhost:3000/api/v1/users/68bd969cdc61335c1ddb2397
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGJkOTY5Y2RjNjEzMzVjMWRkYjIzOTciLCJpYXQiOjE3NTcyNTU1MTksImV4cCI6MTc1NzM0MTkxOX0.xVSHoMeepbP-c2PaUEBIFhXn7akIPWcaRS_-cmdwJj0
+
+### get all subscriptions
+
+GET http://localhost:3000/api/v1/subscriptions
+Authorization: Bearer <JWT_TOKEN>
+
+### get subscription by user id
+GET http://localhost:3000/api/v1/subscriptions/user/USER_ID
+Authorization: Bearer <JWT_TOKEN>
+
+
+### get subscription by id
+GET http://localhost:3000/api/v1/subscriptions/SUBSCRIPTION_ID
+Authorization: Bearer <JWT_TOKEN>
+
+
+### create subscription
+POST http://localhost:3000/api/v1/subscriptions
+Authorization: Bearer <JWT_TOKEN>
+Content-Type: application/json
+
+{
+  "name": "Netflix Premium",
+  "price": 999,
+  "currency": "INR",
+  "frequency": "monthly",
+  "category": "entertainment",
+  "paymentMethod": "debit_card",
+  "startDate": "2025-08-13"
+}
+
+
+### update subscription
+PUT http://localhost:3000/api/v1/subscriptions/SUBSCRIPTION_ID
+Authorization: Bearer <JWT_TOKEN>
+Content-Type: application/json
+
+{
+  "price": 1199,
+  "paymentMethod": "credit_card"
+}
+
+
+### delete subscription
+DELETE http://localhost:3000/api/v1/subscriptions?id=SUBSCRIPTION_ID
+Authorization: Bearer <JWT_TOKEN>
+
+
+### cancel subscription
+PUT http://localhost:3000/api/v1/subscriptions/SUBSCRIPTION_ID/cancel
+Authorization: Bearer <JWT_TOKEN>
+
+### get upcoming renewals
+GET http://localhost:3000/api/v1/subscriptions/upcoming-renewals
+Authorization: Bearer <JWT_TOKEN>
