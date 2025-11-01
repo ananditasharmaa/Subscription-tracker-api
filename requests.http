@@ -20,17 +20,17 @@ Content-Type: application/json
 
 ### Create subscription
 POST http://localhost:3000/api/v1/subscriptions
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGJiMGYxMTliOTM3Mzc1OGJlMGM0NWEiLCJpYXQiOjE3NTcwOTU0MDQsImV4cCI6MTc1NzE4MTgwNH0.1kveTqijBZzmxL3rMR4b4kJGWalLY1FTewoIfLTPAPE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTA1YTA0ZWQwNmQ1NTUzYmZjZWM5YTMiLCJpYXQiOjE3NjE5NzY5MDYsImV4cCI6MTc2MjA2MzMwNn0.v9Al8FrSSn1tCqSk6H-KFqymBEP31BC2pffHsRtWLWA
 Content-Type: application/json
 
 {
-  "name": "Netflix Premium",
-  "price": 999,
+  "name": "Amazon Premium",
+  "price": 1999,
   "currency": "INR",
   "frequency": "monthly",
   "category": "entertainment",
   "paymentMethod": "debit_card",
-  "startDate": "2025-08-13"
+  "startDate": "2025-10-5"
 }
 
 ### signup

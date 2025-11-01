@@ -21,16 +21,19 @@ export const sendReminders = serve(async (context) => {
   }
 
   for (const daysBefore of REMINDERS) {
-    const reminderDate = renewalDate.subtract(daysBefore, 'day');
+  const reminderDate = renewalDate.subtract(daysBefore, 'day');
+  const now = dayjs();
 
-    if(reminderDate.isAfter(dayjs())) {
-      await sleepUntilReminder(context, `Reminder ${daysBefore} days before`, reminderDate);
-    }
-
-    if (dayjs().isSame(reminderDate, 'day')) {
-      await triggerReminder(context, `${daysBefore} days before reminder`, subscription);
-    }
+  if (reminderDate.isAfter(now)) {
+    await sleepUntilReminder(context, `Reminder ${daysBefore} days before`, reminderDate);
   }
+
+  // 🔥 New logic: if reminder date already passed but renewal still upcoming → send now
+  else if (reminderDate.isBefore(now) && now.isBefore(renewalDate)) {
+    await triggerReminder(context, `${daysBefore} days before reminder`, subscription);
+  }
+}
+
 });
 
 const fetchSubscription = async (context, subscriptionId) => {
