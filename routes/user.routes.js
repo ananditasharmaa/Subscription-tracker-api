@@ -1,22 +1,25 @@
-import { Router } from "express";
-import { getUser, getUsers, createUser, updateUser, deleteUser } from "../controllers/user.controller.js";
-import authorize from "../middlewares/auth.middleware.js";
+import { Router } from 'express';
+import authorize from '../middlewares/auth.middleware.js';
+
+import {
+  getUsers,
+  getUser,
+  updateUser,
+  deleteUser
+} from '../controllers/user.controller.js';
 
 const userRouter = Router();
 
-// 1. GET all users
-userRouter.get("/", getUsers);
+// Get all users (public safe version)
+userRouter.get('/', getUsers);
 
-// 2. GET one user by ID
-userRouter.get("/:id", authorize, getUser);
+// Get single user (owner only)
+userRouter.get('/:id', authorize, getUser);
 
-// 3. CREATE a user
-userRouter.post("/", createUser);
+// Update user (owner only)
+userRouter.put('/:id', authorize, updateUser);
 
-// 4. UPDATE a user
-userRouter.put("/:id", authorize, updateUser);
-
-// 5. DELETE a user
-userRouter.delete("/:id", authorize, deleteUser);
+// Delete user (owner only)
+userRouter.delete('/:id', authorize, deleteUser);
 
 export default userRouter;

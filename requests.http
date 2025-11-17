@@ -4,8 +4,8 @@ Content-Type: application/json
 
 {
   "name": "Anandita Sharma",
-  "email": "aananditasharma2003@gmail.com",
-  "password": "ananditasharma"
+  "email": "ananditasharma2024@gmail.com",
+  "password": "anandita_sharma"
 }
 
 ###user login
@@ -13,25 +13,49 @@ POST http://localhost:3000/api/v1/auth/sign-in
 Content-Type: application/json
 
 {
-  "email": "aananditasharma2003@gmail.com",
-  "password": "ananditasharma"
+  "email": "ananditasharma2024@gmail.com",
+  "password": "anandita_sharma"
 }
 
 
 ### Create subscription
 POST http://localhost:3000/api/v1/subscriptions
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTA1YTA0ZWQwNmQ1NTUzYmZjZWM5YTMiLCJpYXQiOjE3NjE5NzY5MDYsImV4cCI6MTc2MjA2MzMwNn0.v9Al8FrSSn1tCqSk6H-KFqymBEP31BC2pffHsRtWLWA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTA1YWVmOWM0NjI3MjBiZDQyODc3YWYiLCJpYXQiOjE3NjMzOTY4MDYsImV4cCI6MTc2MzQ4MzIwNn0.RH9ItkSliySXiIB_OiIJqTx7nYxQoDh9vNYpE3iYeSs
 Content-Type: application/json
 
 {
-  "name": "Amazon Premium",
-  "price": 1999,
+  "name": "YouTube",
+  "price": 199,
   "currency": "INR",
   "frequency": "monthly",
   "category": "entertainment",
   "paymentMethod": "debit_card",
-  "startDate": "2025-10-5"
+  "startDate": "2025-10-20"
 }
+
+### update subscription
+PUT http://localhost:3000/api/v1/subscriptions/691b47133f484ab3e4230f15
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTA1YWVmOWM0NjI3MjBiZDQyODc3YWYiLCJpYXQiOjE3NjMzOTUxMDIsImV4cCI6MTc2MzQ4MTUwMn0.exUDfbrwh11uldyeipZNK6lQ2hFO2So_J2VC402CwWE
+Content-Type: application/json
+
+{
+  "price": 299,
+  "paymentMethod": "credit_card"
+}
+
+### get subscription by user id
+GET http://localhost:3000/api/v1/subscriptions/user/6905aef9c462720bd42877af
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTA1YWVmOWM0NjI3MjBiZDQyODc3YWYiLCJpYXQiOjE3NjMzOTUxMDIsImV4cCI6MTc2MzQ4MTUwMn0.exUDfbrwh11uldyeipZNK6lQ2hFO2So_J2VC402CwWE
+
+### get subscription by id
+GET http://localhost:3000/api/v1/subscriptions/691b47133f484ab3e4230f15
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTA1YWVmOWM0NjI3MjBiZDQyODc3YWYiLCJpYXQiOjE3NjMzOTUxMDIsImV4cCI6MTc2MzQ4MTUwMn0.exUDfbrwh11uldyeipZNK6lQ2hFO2So_J2VC402CwWE
+
+
+### delete subscription
+DELETE http://localhost:3000/api/v1/subscriptions?id=6905afdd5555ba6f69abf280
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTA1YWVmOWM0NjI3MjBiZDQyODc3YWYiLCJpYXQiOjE3NjE5ODAzNTgsImV4cCI6MTc2MjA2Njc1OH0.1TmM7bZ-0wXEnWyi2kXNBHBBENLDZRjHZX3mQgZF6NU
+
 
 ### signup
 POST http://localhost:3000/api/v1/auth/sign-up
@@ -51,15 +75,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGJkO
 GET http://localhost:3000/api/v1/users/68bb0f119b9373758be0c45a
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGJkOGVlZWFkZDY2MGY2NjIwOGNjNmQiLCJpYXQiOjE3NTcyNTMzNTgsImV4cCI6MTc1NzMzOTc1OH0.THQ_t_Aw8BvJprV64TcVxnNfBOLM633Z-rc8H6BwDM8
 
-### create admin
-POST http://localhost:3000/api/v1/users
-Content-Type: application/json
 
-{
-  "name": "Admin",
-  "email": "221210018@nit.ac.in",
-  "password": "admin123"
-}
 
 ###user login
 POST http://localhost:3000/api/v1/auth/sign-in
@@ -89,15 +105,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGJkO
 GET http://localhost:3000/api/v1/subscriptions
 Authorization: Bearer <JWT_TOKEN>
 
-### get subscription by user id
-GET http://localhost:3000/api/v1/subscriptions/user/USER_ID
-Authorization: Bearer <JWT_TOKEN>
-
-
-### get subscription by id
-GET http://localhost:3000/api/v1/subscriptions/SUBSCRIPTION_ID
-Authorization: Bearer <JWT_TOKEN>
-
 
 ### create subscription
 POST http://localhost:3000/api/v1/subscriptions
@@ -114,21 +121,15 @@ Content-Type: application/json
   "startDate": "2025-08-13"
 }
 
-
-### update subscription
-PUT http://localhost:3000/api/v1/subscriptions/SUBSCRIPTION_ID
-Authorization: Bearer <JWT_TOKEN>
+### create admin
+POST http://localhost:3000/api/v1/users
 Content-Type: application/json
 
 {
-  "price": 1199,
-  "paymentMethod": "credit_card"
+  "name": "Admin",
+  "email": "221210018@nit.ac.in",
+  "password": "admin123"
 }
-
-
-### delete subscription
-DELETE http://localhost:3000/api/v1/subscriptions?id=SUBSCRIPTION_ID
-Authorization: Bearer <JWT_TOKEN>
 
 
 ### cancel subscription
