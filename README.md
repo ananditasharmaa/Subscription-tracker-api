@@ -1,47 +1,136 @@
-# 🧾 Subscription Management API – Built for Real Users, Real Payments, Real Scale
+# 🚀 Subscription Tracker API
 
-A backend system that handles everything from user authentication to subscription tracking and automated renewal reminders. This isn’t a demo — it’s designed for **real-world deployment**, with all the structure and safeguards a production-grade app needs.
+A production-ready backend service to manage digital subscriptions, track renewal dates, and send automated reminder emails using **Node.js**, **Express**, **MongoDB**, **JWT Authentication**, **Upstash QStash**, and **Nodemailer**.
 
-Whether you're managing a Spotify-style subscription service or a SaaS billing layer, this system lays the groundwork.
-
----
-
-## 🧠 What This Project Covers
-
-- **🔐 JWT-Based User Auth**  
-  Secure sign-in/sign-up with route protection and role-based access for real users.
-
-- **📦 Subscription Lifecycle Management**  
-  Create, update, cancel, and track renewals — all tied to authenticated users and stored persistently via MongoDB.
-
-- **📧 Automated Email Reminders with Upstash**  
-  Subscription reminders are handled through background workflows triggered on creation — no cron jobs, no manual queues.
-
-- **🚫 Rate Limiting and Bot Protection**  
-  Arcjet middleware integration helps secure public endpoints from abuse and bot attacks.
-
-- **📊 MongoDB Modeling with Mongoose**  
-  Designed for clarity and scalability, with clean schema definitions for both users and subscriptions.
-
-- **🧰 Middleware and Error Handling**  
-  Centralized error flow, custom error classes, and validation responses built to make debugging *actually helpful*.
-
-- **🛠 Modular API Architecture**  
-  Routes → Controllers → Services, following a clean, maintainable pattern to scale features without spaghetti.
+This API is designed with clean architecture, secure authentication, automated workflows, and real-world SaaS backend patterns.
 
 ---
 
-## 🛠 Stack & Tools
+## 🌐 Live API URL
 
-| Category | Tech |
-|---------|------|
-| Backend Framework | Express.js |
-| Database | MongoDB + Mongoose |
-| Auth | JWT + Bcrypt |
-| Rate Limiting | Arcjet |
-| Emails | Nodemailer + Upstash Workflows |
+```
+https://subscription-tracker-api-ujcy.onrender.com
+```
+
+> ⚠️ This is a **backend API**, not a frontend website. Use Postman, Thunder Client, or cURL to interact with protected routes.
 
 ---
+
+## 📦 Features
+
+### 🔐 Authentication
+
+* User registration and login using JWT
+* Secure password hashing with bcrypt
+* Stateless token-based auth
+* Token blacklist for secure logout
+
+### 🎫 Subscription Management
+
+* Create, update, cancel, and delete subscriptions
+* Auto-calculate renewal dates
+* Auto-expire subscriptions based on renewal date
+* Fully user-scoped subscription access control
+
+### 📬 Automated Email Reminders
+
+* Renewal reminders at:
+
+  * 7 days
+  * 5 days
+  * 2 days
+  * 1 day before renewal
+* Beautiful HTML email templates
+* Nodemailer SMTP integration for email delivery
+
+### ⚙️ Upstash QStash Workflow
+
+* Delayed and scheduled execution
+* Workflow retries
+* Sleep-until reminder logic
+* Event-driven architecture
+
+### 🗄 MongoDB + Mongoose
+
+* Schema validation
+* Indexing
+* Timestamps
+* Relationship population for workflows
+
+---
+
+## 📘 API Endpoints
+
+### 🔐 Authentication Routes
+
+| Method | Endpoint                | Description               |
+| ------ | ----------------------- | ------------------------- |
+| POST   | `/api/v1/auth/sign-up`  | Register a new user       |
+| POST   | `/api/v1/auth/sign-in`  | Login user                |
+| POST   | `/api/v1/auth/sign-out` | Logout (blacklists token) |
+
+---
+
+### 📦 Subscription Routes
+
+| Method | Endpoint                                  | Auth | Description                  |
+| ------ | ----------------------------------------- | ---- | ---------------------------- |
+| POST   | `/api/v1/subscriptions`                   | ✔    | Create a subscription        |
+| GET    | `/api/v1/subscriptions/user/:id`          | ✔    | Get subscriptions for a user |
+| GET    | `/api/v1/subscriptions/:id`               | ✔    | Get subscription by ID       |
+| PUT    | `/api/v1/subscriptions/:id`               | ✔    | Update subscription          |
+| DELETE | `/api/v1/subscriptions/:id`               | ✔    | Delete subscription          |
+| PUT    | `/api/v1/subscriptions/:id/cancel`        | ✔    | Cancel subscription          |
+| GET    | `/api/v1/subscriptions/upcoming-renewals` | ✔    | Get upcoming renewals        |
+
+---
+
+### ⏰ Workflow Route (Upstash QStash)
+
+| Method | Endpoint                                  | Description                               |
+| ------ | ----------------------------------------- | ----------------------------------------- |
+| POST   | `/api/v1/workflows/subscription/reminder` | Trigger the subscription renewal workflow |
+
+---
+
+## 🧪 Testing the API
+
+Use **Postman**, **Thunder Client**, or **cURL**.
+
+Example:
+
+```
+GET https://subscription-tracker-api-ujcy.onrender.com/api/v1/subscriptions/user/<USER_ID>
+Authorization: Bearer <JWT_TOKEN>
+```
+
+---
+
+## 🛠 Technologies Used
+
+* Node.js
+* Express.js
+* MongoDB Atlas
+* Mongoose
+* JWT Authentication
+* Upstash QStash Workflows
+* Nodemailer (SMTP)
+* Day.js
+
+---
+
+## 📬 Email Reminder Workflow
+
+Automated reminders include:
+
+* User name personalization
+* Subscription-specific details
+* Auto-calculated renewal dates
+
+Emails use a responsive HTML template generated dynamically based on reminder type.
+
+---
+
 
 ## Why I Built This
 
@@ -61,3 +150,10 @@ git clone https://github.com/your-username/subscription-api.git
 cd subscription-api
 npm install
 npm run dev
+
+---
+
+
+## 🙌 Acknowledgements
+
+Thanks to Upstash, MongoDB Atlas, and Render for their amazing developer tools.
