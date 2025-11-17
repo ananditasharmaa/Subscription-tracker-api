@@ -138,8 +138,6 @@ While following tutorials helped me grasp the building blocks, I customized and 
 
 It’s now fully ready to be deployed as a backend for any subscription-based app — think content platforms, SaaS tools, or even gym memberships.
 
-> This project was originally inspired by a tutorial from [JS Mastery], and expanded upon to add custom features, security layers, and deployment integrations.
-
 
 ---
 
