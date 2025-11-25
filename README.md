@@ -47,7 +47,7 @@ https://subscription-tracker-api-ujcy.onrender.com
 
 * Delayed and scheduled execution
 * Workflow retries
-* Sleep-until reminder logic
+* Sleep-until-reminder logic
 * Event-driven architecture
 
 ### 🗄 MongoDB + Mongoose
@@ -59,29 +59,40 @@ https://subscription-tracker-api-ujcy.onrender.com
 
 ---
 
-## 📘 API Endpoints
+## 📁 Full API Routes
 
-### 🔐 Authentication Routes
+### 🔐 Authentication
 
-| Method | Endpoint                | Description               |
-| ------ | ----------------------- | ------------------------- |
-| POST   | `/api/v1/auth/sign-up`  | Register a new user       |
-| POST   | `/api/v1/auth/sign-in`  | Login user                |
-| POST   | `/api/v1/auth/sign-out` | Logout (blacklists token) |
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/api/v1/auth/sign-up` | ❌ | Register a new user |
+| POST | `/api/v1/auth/sign-in` | ❌ | Login & receive JWT |
+| POST | `/api/v1/auth/sign-out` | ✔ | Logout & blacklist token |
+
+---
+
+### 👤 User Routes
+
+| Method | Endpoint | Auth | Access | Description |
+|--------|----------|------|--------|-------------|
+| GET | `/api/v1/users` | ❌ | Public | Fetch all users (safe data only) |
+| GET | `/api/v1/users/:id` | ✔ | Owner Only | Get user profile |
+| PUT | `/api/v1/users/:id` | ✔ | Owner Only | Update user profile |
+| DELETE | `/api/v1/users/:id` | ✔ | Owner Only | Delete user account |
 
 ---
 
 ### 📦 Subscription Routes
 
-| Method | Endpoint                                  | Auth | Description                  |
-| ------ | ----------------------------------------- | ---- | ---------------------------- |
-| POST   | `/api/v1/subscriptions`                   | ✔    | Create a subscription        |
-| GET    | `/api/v1/subscriptions/user/:id`          | ✔    | Get subscriptions for a user |
-| GET    | `/api/v1/subscriptions/:id`               | ✔    | Get subscription by ID       |
-| PUT    | `/api/v1/subscriptions/:id`               | ✔    | Update subscription          |
-| DELETE | `/api/v1/subscriptions/:id`               | ✔    | Delete subscription          |
-| PUT    | `/api/v1/subscriptions/:id/cancel`        | ✔    | Cancel subscription          |
-| GET    | `/api/v1/subscriptions/upcoming-renewals` | ✔    | Get upcoming renewals        |
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/api/v1/subscriptions` | ✔ | Create subscription |
+| GET | `/api/v1/subscriptions/user/:id` | ✔ | Get user subscriptions |
+| GET | `/api/v1/subscriptions/:id` | ✔ | Get subscription by ID |
+| PUT | `/api/v1/subscriptions/:id` | ✔ | Update subscription |
+| DELETE | `/api/v1/subscriptions/:id` | ✔ | Delete subscription |
+| PUT | `/api/v1/subscriptions/:id/cancel` | ✔ | Cancel subscription |
+| GET | `/api/v1/subscriptions/upcoming-renewals` | ✔ | List upcoming renewals |
 
 ---
 
